@@ -20,7 +20,7 @@ function getAllMovies(req, res, next) {
 function getMovie(req, res, next) {
 // implement get single movie
   req.body.mID = Number.parseInt(req.params.movieID);
-  db.one('SELECT * FROM movies WHERE id = $1', [req.body.mID])
+  db.one('SELECT * FROM movies WHERE id = $1, $2', [req.body.mID, REQ.QUERY.TITLE])
   .then((onemovie) => {
     res.rows = onemovie;
     next();
